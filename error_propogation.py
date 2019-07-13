@@ -6,12 +6,16 @@ Created on Fri Jul 12 17:43:31 2019
 """
 
 #from sympy import *
-from sympy import init_printing, symbols, Derivative, sqrt, log, Eq
+from sympy import init_printing, symbols, Symbol, Derivative, sqrt, log, Eq
 from IPython.display import display
 init_printing(use_latex=True, latex_mode='equation*', forecolor='White') 
 #remove "White" if your background is white
  
-g, Delta_g, t, theta_s, theta_0, theta_t, Delta_t, Delta_theta = symbols ('g, Delta_g, t, theta_s, theta_0, theta_t, Delta_t, Delta_theta')
+g, t, theta_s, theta_0, theta_t = symbols ('g, t, theta_s, theta_0, theta_t')
+
+Delta_g = Symbol('\Delta g')
+Delta_t = Symbol('\Delta t')
+Delta_theta = Symbol('\Delta \Theta')
 
 variables = (t, theta_s, theta_0, theta_t)
 
