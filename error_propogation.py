@@ -6,16 +6,18 @@ Created on Fri Jul 12 17:43:31 2019
 """
 
 #from sympy import *
-from sympy import init_printing, symbols, Symbol, Derivative, sqrt, log, Eq
+from sympy import init_printing, Function, symbols, Symbol, Derivative, sqrt, log, Eq
 from IPython.display import display
 init_printing(use_latex=True, latex_mode='equation*', forecolor='White') 
 #remove "White" if your background is white
  
-g, t, theta_s, theta_0, theta_t = symbols ('g, t, theta_s, theta_0, theta_t')
+G = Function('G')
+
+g, t, theta_s, theta_0, theta_t = symbols('g, t, theta_s, theta_0, theta_t')
 
 Delta_g = Symbol('\Delta g')
 Delta_t = Symbol('\Delta t')
-Delta_theta = Symbol('\Delta \Theta')
+Delta_theta = Symbol('\Delta \\theta')
 
 variables = (t, theta_s, theta_0, theta_t)
 
@@ -28,13 +30,14 @@ deltadict =	{
 def G(*variables):
     return 1/t * log( (theta_0 - theta_s) / (theta_t - theta_s) )
 
+
 display(Eq(g, G(*variables)))
 
 g_sum_squares = 0
 G_sum_squares = 0
 
 for variable in variables:
-    g_derivative = Derivative(g,variable) 
+    g_derivative = Derivative(g,variable)
     G_derivative = Derivative(G(*variables), variable)
     display(Eq(g_derivative, G_derivative.doit()))
     g_sum_squares = g_sum_squares + (g_derivative * deltadict[variable])**2
