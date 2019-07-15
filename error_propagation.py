@@ -74,9 +74,9 @@ display(Eq(Df,DF.doit()))
 # In[14]:
 
 
-F_num = F.evalf(subs={x:3600, b_0:100, b_s:20, b_x:60})
+F_num = F.evalf(subs={x:120, b_0:100, b_s:20, b_x:60})
 display(F_num)
 
-DF_num = DF.evalf(subs={x:3600, Dx:1, b_0:100, b_s:20, b_x:60, Db:0.1})
+DF_num = DF.evalf(subs={x:120, Dx:1, b_0:100, b_s:20, b_x:60, Db:0.1})
 display(DF_num)
 
