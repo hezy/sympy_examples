@@ -8,24 +8,28 @@ https://en.wikipedia.org/wiki/Propagation_of_uncertainty
 '''
 
 # Import
-from sympy import init_printing, Function, symbols, Symbol, Derivative, sqrt, log, Eq, latex
+from sympy import init_printing, symbols, Symbol, Derivative, sqrt, log, Eq, latex
+# from sympy import Function
 from IPython.display import display, Latex
-init_printing(use_latex=True, latex_mode='equation*') 
+init_printing(use_latex=True, latex_mode='equation*')
 
 
 # In[2]:
 
 # Define variables
-#F = Function('F')
+# F = Function('F')
 
-f, x, b_s, b_0, b_x = symbols ('f, x, \\beta_s, \\beta_0, \\beta_x')
+f, x, b_s, b_0, b_x = symbols('f, x, \\beta_s, \\beta_0, \\beta_x')
 
-Df = Symbol('\Delta f')
-Dx = Symbol('\Delta x')
-Db = Symbol('\Delta \\beta')
+Df = Symbol(r'\Delta f')
+Dx = Symbol(r'\Delta x')
+Db = Symbol(r'\Delta \\beta')
 
 variables = (x, b_s, b_0, b_x)
-deltadict =	{x: Dx, b_s: Db, b_0: Db, b_x: Db}
+deltadict = {x: Dx,
+             b_s: Db,
+             b_0: Db,
+             b_x: Db}
 
 # In[3]:
 
@@ -36,7 +40,11 @@ F = 1/x * log((b_0 - b_s) / (b_x - b_s))
 display(Eq(f, F))
 
 # In[4]:
-# Calculate the partial derevitives of the function G for each of its variables, sum up the squares of the obtained derivatives:
+'''
+Calculate the partial derevitives of the function G
+for each of its variables,
+sum up the squares of the obtained derivatives:
+'''
 
 f_sum_squares = 0
 F_sum_squares = 0
@@ -61,7 +69,6 @@ display(Eq(Df, DF.doit()))
 
 
 # In[6]:
-
 
 F_num = F.evalf(subs={x: 120,
                       b_0: 100,
